@@ -28,6 +28,11 @@ print(list_of_y)
 print(len(list_of_y))
 #In the example, the last element of the lists is index 54
 
+#Following is pseudo code; bearing and robot bearing are part of other modules I am working on, I plan on integrating a digital compass for this. 
+#DONT MAKE FUN OF ME! THis is very basic waypoint to waypoint nav, think of a roomba moving in one plane at a time. First it finds X then Y.
+#I know this is VERY slow, I want to make async functions that find X and Y at the same time. ITs just going to need lots of math to account for drift.
+#This will be a good testing ground though
+#-Giovanni 
 while current_x != list_of_x[54] and current_y != list_of_y[54]: #while robot is not at its destination
     for i in list_of_x: #list of x and y will always have the same number of indecies
         bearing = ox.bearing.calculate_bearing(current_x, current_y, list_of_x[i], list_of_y[i]) #find bearing in degrees between current location and next waypoint
