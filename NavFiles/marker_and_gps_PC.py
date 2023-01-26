@@ -5,6 +5,8 @@ import time
 
 #This Module interfaces with a USB GPS and Creates a map with a marker that updates with the GPS movement.
 #1/25/2023 I plan on making the Map + Marker code a seperate function that interacts with the internet so you can track the GPS off the machine
+# -Giovanni 
+
 
 gps = serial.Serial("COM4", baudrate = 9600)
 #IF using on linux, change "COM4" to "/dev/ttyACM0"
