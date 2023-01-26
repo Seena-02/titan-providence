@@ -12,6 +12,7 @@ ox.settings.use_cache=True
 
 def make_route(strt_lng ,strt_lat, end_lng, end_lt):
 
+#For Debugging purposes the destination and starting point are hardset
     print("=================Make_Route Function Starting==========================")
 
     start_lat = float(33.87399)
@@ -39,18 +40,20 @@ def make_route(strt_lng ,strt_lat, end_lng, end_lt):
     #ox.bearing.add_edge_bearings(graph, precision=1)
     #Calculate Bearing Between two points, returns bearing in degrees
     #bearing = ox.bearing.calculate_bearing(lat1, lng1, lat2, lng2)
-    ####Task(Convert all node IDs in list into an ordered pair of longs and lats)
-    #shortest_route is a list of nodeids of the route, you can get the lat and long of each node by using G.node[nodeid]['x'] and so on. x for long y for lat
     shortest_route = ox.distance.shortest_path(graph,
                                       orig_node,
                                       dest_node,
                                       weight=optimizer)
 
+    #creates a map viewable in HTML of set route
     route_map = ox.plot_route_folium(graph, shortest_route)
     route_map.save('route5.html')
     list_of_x = []
     list_of_y = []
 
+    #Shortest_route is a list of nodeids, a node id can be converted into latitude and longitude
+    #The following converts nodeids and saves lat and long to their own seperate list. 
+    
     print("printing node ids.")
     for i in range(len(shortest_route)):
         curr_node = shortest_route[i]
