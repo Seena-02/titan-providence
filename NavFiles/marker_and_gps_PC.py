@@ -15,6 +15,8 @@ tooltip = "Click For Details"
 
 def gps_module():
     while True:
+        #All of this is needed to decode the GPM3 format GPS broadcasts in. gotta love it! 
+        #Tested and confirmed to be accurate to 6 decimal places
         line = gps.readline()
         data = line.decode().split(",")
         if data[0] == "$GPRMC":
