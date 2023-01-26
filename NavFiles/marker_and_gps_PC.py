@@ -3,9 +3,10 @@ import folium
 import serial
 import time
 
-
+#This Module interfaces with a USB GPS and Creates a map with a marker that updates with the GPS movement.
 
 gps = serial.Serial("COM4", baudrate = 9600)
+#IF using on linux, change "COM4" to "/dev/ttyACM0"
 
 tooltip = "Click For Details"
 
