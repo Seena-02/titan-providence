@@ -38,6 +38,7 @@ while current_x != list_of_x[54] and current_y != list_of_y[54]: #while robot is
         bearing = ox.bearing.calculate_bearing(current_x, current_y, list_of_x[i], list_of_y[i]) #find bearing in degrees between current location and next waypoint
         while bearing != robot_bearing:
             # make seperate function for handling obstructions
+            #if object detected, move left if on right, move right if on left, backup if too close, far away triggers no response.
             if bearing > 180 and bearing < 360:
                 #turn left
             if bearing < 180 and bearing > 0:
