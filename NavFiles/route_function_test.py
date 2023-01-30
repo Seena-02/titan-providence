@@ -37,6 +37,7 @@ while current_x != list_of_x[54] and current_y != list_of_y[54]: #while robot is
     for i in list_of_x: #list of x and y will always have the same number of indecies
         bearing = ox.bearing.calculate_bearing(current_x, current_y, list_of_x[i], list_of_y[i]) #find bearing in degrees between current location and next waypoint
         while bearing != robot_bearing:
+            # make seperate function for handling obstructions
             if bearing > 180 and bearing < 360:
                 #turn left
             if bearing < 180 and bearing > 0:
