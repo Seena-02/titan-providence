@@ -7,6 +7,31 @@ import time
 from threading import Thread
 import importlib.util
 
+# Calculate Distance from camera
+
+def cameraDist(height, width):
+    # Drone Re-routing Defense
+    # Green Zone - Small / No Object Detected (No issue to flight path)         (0)
+    # Yellow Zone - Moderate Sized Objected Detected (Proceed with caution)     (1)
+    # Red Zone - Large Object Detected (Pause flight path immediately)           (2)
+
+
+    object_area = int(height * width)
+
+    # The following is the calculated distances from the webcam
+    green_zone = 455 * 155
+    yellow_zone = 445 * 270
+    red_zone = 480 * 430
+
+    if(object_area <= green_zone):
+        return 0
+    elif(object_area <= yellow_zone):
+        return 1
+    else:
+        return 2
+
+    
+
 # Define VideoStream class to handle streaming of video from webcam in separate processing thread
 class VideoStream:
     """Camera object that controls video streaming from the Picamera"""
@@ -188,6 +213,10 @@ while True:
             xmin = int(max(1,(boxes[i][1] * imW)))
             ymax = int(min(imH,(boxes[i][2] * imH)))
             xmax = int(min(imW,(boxes[i][3] * imW)))
+
+            # Rectangle H x W
+            x_width  = xmax - xmin
+            y_height = ymax - ymin
             
             cv2.rectangle(frame, (xmin,ymin), (xmax,ymax), (10, 255, 0), 2)
 
@@ -198,6 +227,11 @@ while True:
             label_ymin = max(ymin, labelSize[1] + 10) # Make sure not to draw label too close to top of window
             cv2.rectangle(frame, (xmin, label_ymin-labelSize[1]-10), (xmin+labelSize[0], label_ymin+baseLine-10), (255, 255, 255), cv2.FILLED) # Draw white box to put label text in
             cv2.putText(frame, label, (xmin, label_ymin-7), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2) # Draw label text
+
+            # Handle info for objects detected. End goal here is to send this info to the NAV modules. If the object detects something in the Red Zone,
+            # calculate an alternate route.
+            print(object_name, " H:", y_height,"W:", x_width)
+            print("\t", "Zone:", cameraDist(y_height, x_width))
 
     # Draw framerate in corner of frame
     cv2.putText(frame,'FPS: {0:.2f}'.format(frame_rate_calc),(30,50),cv2.FONT_HERSHEY_SIMPLEX,1,(255,255,0),2,cv2.LINE_AA)
