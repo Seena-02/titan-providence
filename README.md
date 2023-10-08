@@ -24,7 +24,6 @@ conda create -n "drone-env" python=3.8.0
 conda activate drone-env
 
 bash get_pi_requirements.sh
-
 ```
 
 ## 3. Note for macOS and Windows Users
@@ -50,9 +49,8 @@ Begin by issuing the following.
 
 ```
 echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sudo tee /etc/apt/sources.list.d/coral-edgetpu.list
-curl packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 
-sudo apt-get update
+curl packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 ```
 
 **Before procceding ensure that the USB Accelerator is NOT plugged into the device.**
