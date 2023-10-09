@@ -1,8 +1,6 @@
 # QuickStart Guide
 
-## To Test Object Detection
-
-To get started with testing object detection, follow these steps:
+To get started, follow these steps:
 
 ## 1. Clone the Repository
 
@@ -22,11 +20,13 @@ cd Drone-Modules
 conda create -n "drone-env" python=3.8.0
 
 conda activate drone-env
-
-bash get_pi_requirements.sh
 ```
 
-## 3. Note for macOS and Windows Users
+## 3 Prerequisites
+
+```
+bash get_pi_requirements.sh
+```
 
 **Note:** If you attempt to replicate this process on macOS or Windows, the installation of the tflite runtime will not succeed. To resolve this, you will need to manually navigate [here](https://github.com/google-coral/pycoral/releases/) and install the tflite_runtime-2.5.0 package.
 
@@ -41,7 +41,6 @@ python3 ObjectDetection/TFLite_detection_webcam.py --modeldir=Sample_TFLite_mode
 ## 5. Use the Coral USB Accelerator(Increase TensorFlow Lite FPS!)
 
 If you're working on a desktop or laptop PC, feel free to skip this step. However, if your intention is to deploy this on a Raspberry Pi, please continue below.
-
 
 A Coral USB Accelerator can be purchased [here](https://coral.ai/products/accelerator/).
 
@@ -58,12 +57,14 @@ curl packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 You may choose either the **standard** or **max** runtime. **Note** that while the max runtime offers faster frame rates by overclocking the processor, temperatures will increase.
 
 ```
+# Standard
 sudo apt get install libedgetpu1-std
 ```
 
 or
 
 ```
+# Max
 sudo apt get install libedgetpu1-max
 ```
 
