@@ -4,10 +4,9 @@ To get started, follow these steps:
 
 ## 1. Clone the Repository
 
-Begin by cloning the Repo.
-
-```
-https://github.com/Seena-02/titan-providence
+```bash
+# Clone Repository
+git clone https://github.com/Seena-02/titan-providence
 ```
 
 ## 2. Set Up Environment
@@ -22,9 +21,9 @@ conda create -n "drone-env" python=3.8.0
 conda activate drone-env
 ```
 
-## 3 Prerequisites
+## 3. Prerequisites
 
-```
+```bash
 # Install Dependencies
 bash get_pi_requirements.sh
 ```
@@ -45,9 +44,7 @@ python3 ObjectDetection/TFLite_detection_webcam.py --modeldir=Sample_TFLite_mode
 
 ## 5. Use the Coral USB Accelerator(Increase TensorFlow Lite FPS!)
 
-If you're working on a desktop or laptop PC, feel free to skip this step. However, if your intention is to deploy this on a Raspberry Pi, please continue below.
-
-A Coral USB Accelerator can be purchased [here](https://coral.ai/products/accelerator/).
+If you're working on a desktop or laptop PC, feel free to skip this step. However, if your intention is to deploy this on a Raspberry Pi, please continue below. A Coral USB Accelerator can be purchased [here](https://coral.ai/products/accelerator/). During our testing, we observed a 3x increase in frames per second (FPS).
 
 Begin by issuing the following.
 
