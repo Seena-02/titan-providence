@@ -1,3 +1,8 @@
+# Titan Providence
+
+![drone](images/titan-providence-demo.gif)
+![drone](images/titan-providence.jpg)
+
 # QuickStart Guide
 
 To get started, follow these steps:
