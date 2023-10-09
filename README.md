@@ -56,14 +56,14 @@ curl packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 
 You may choose either the **standard** or **max** runtime. **Note** that while the max runtime offers faster frame rates by overclocking the processor, temperatures will increase.
 
-```
+```bash
 # Standard
 sudo apt get install libedgetpu1-std
 ```
 
 or
 
-```
+```bash
 # Max
 sudo apt get install libedgetpu1-max
 ```
