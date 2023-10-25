@@ -81,7 +81,7 @@ Plug in Edge TPU into the device, and issue the following.
 
 ```bash
 # Run Detection w/ --edgetpu
-python3 TFLite_detection_webcam.py --modeldir=Sample_TFLite_model --edgetpu
+python3 ObjectDetection/TFLite_detection_webcam.py --modeldir=Sample_TFLite_model --edgetpu
 ```
 
 Feel free to explore and modify the repository to suit your needs. -Titan Providence :)
